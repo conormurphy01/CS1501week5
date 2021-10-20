@@ -1,0 +1,14 @@
+from googleapiclient.discovery import build
+api_key = 'AIzaSyD0X9N_v0vpqnLn7xLj3_sNWo1By2s6Dvk'
+youtube = build('youtube', 'v3', developerKey = api_key)
+
+channel_id= 'UC9qkQ1s5iWY6PzYZ5BiD-tQ'
+# channel id is equal to the characters after the last '/' from the homepage url.
+# ex: "https://www.youtube.com/channel/UC9qkQ1s5iWY6PzYZ5BiD-tQ" is homepage url, 
+# so "UC9qkQ1s5iWY6PzYZ5BiD-tQ" is channel 
+
+request = youtube.channels().list(part = 'statistics', id = channel_id)
+
+
+response = request.execute()
+print(response)
